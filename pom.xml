@@ -59,6 +59,11 @@
 
     <profiles>
         <!-- Profile for testing the optimized version -->
+        <!-- Before using this profile, install the optimized JAR to local Maven repository:
+             mvn install:install-file -Dfile=lib/jsqlparser-4.5-ext-v1.0.jar \
+                 -DgroupId=com.github.jsqlparser -DartifactId=jsqlparser \
+                 -Dversion=4.5-ext-v1.0 -Dpackaging=jar
+        -->
         <profile>
             <id>optimized</id>
             <activation>
@@ -67,13 +72,11 @@
                 </property>
             </activation>
             <dependencies>
-                <!-- Exclude the default JSqlParser dependency -->
+                <!-- Override with the optimized JSqlParser version -->
                 <dependency>
                     <groupId>com.github.jsqlparser</groupId>
                     <artifactId>jsqlparser</artifactId>
                     <version>4.5-ext-v1.0</version>
-                    <scope>system</scope>
-                    <systemPath>${project.basedir}/lib/jsqlparser-4.5-ext-v1.0.jar</systemPath>
                 </dependency>
             </dependencies>
         </profile>
@@ -102,6 +105,11 @@
                         </goals>
                         <configuration>
                             <finalName>benchmarks</finalName>
+                            <artifactSet>
+                                <includes>
+                                    <include>*:*</include>
+                                </includes>
+                            </artifactSet>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.openjdk.jmh.Main</mainClass>

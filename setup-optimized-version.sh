@@ -52,11 +52,29 @@ if [ -f "$OUTPUT_FILE" ]; then
     echo "  File: $OUTPUT_FILE"
     echo "  Size: $FILE_SIZE bytes"
     echo ""
-    echo "Setup complete! You can now run benchmarks with the optimized version using:"
-    echo "  mvn clean package -Djsqlparser.optimized"
-    echo "  or"
-    echo "  ./run-benchmarks.sh optimized"
-    echo ""
+    
+    # Install to local Maven repository
+    echo "Installing to local Maven repository..."
+    mvn install:install-file \
+        -Dfile="$OUTPUT_FILE" \
+        -DgroupId=com.github.jsqlparser \
+        -DartifactId=jsqlparser \
+        -Dversion=4.5-ext-v1.0 \
+        -Dpackaging=jar
+    
+    if [ $? -eq 0 ]; then
+        echo ""
+        echo "✓ Installation complete!"
+        echo ""
+        echo "Setup complete! You can now run benchmarks with the optimized version using:"
+        echo "  mvn clean package -Djsqlparser.optimized"
+        echo "  or"
+        echo "  ./run-benchmarks.sh optimized"
+        echo ""
+    else
+        echo "Error: Failed to install to Maven repository."
+        exit 1
+    fi
 else
     echo "Error: Download failed."
     exit 1
