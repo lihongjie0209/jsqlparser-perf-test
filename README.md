@@ -14,6 +14,24 @@ The benchmarks focus on:
 - Timeout mechanism performance
 - Mixed query workloads
 
+## Quick Start
+
+📚 **See [USAGE.md](USAGE.md) for a complete step-by-step guide**
+
+```bash
+# 1. Download optimized version
+./setup-optimized-version.sh
+
+# 2. Run benchmarks for original version
+./run-benchmarks.sh original
+
+# 3. Run benchmarks for optimized version  
+./run-benchmarks.sh optimized
+
+# 4. Generate comparison report
+./generate-report.sh results/benchmark_original_*.json results/benchmark_optimized_*.json
+```
+
 ## Prerequisites
 
 - Java 11 or higher

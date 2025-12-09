@@ -37,3 +37,6 @@ Thumbs.db
 
 # Results directory (optional - comment out if you want to commit results)
 # results/
+
+# Downloaded JARs
+lib/
