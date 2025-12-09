@@ -14,6 +14,12 @@ The benchmarks focus on:
 - Timeout mechanism performance
 - Mixed query workloads
 
+## ⭐ Performance Results
+
+**The optimized version shows a 69.73% average performance improvement!** 🚀
+
+📊 **[View Full Results Summary](RESULTS_SUMMARY.md)** - Detailed performance analysis and benchmark results
+
 ## Quick Start
 
 📚 **See [USAGE.md](USAGE.md) for a complete step-by-step guide**
